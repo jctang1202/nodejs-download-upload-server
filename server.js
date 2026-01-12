@@ -71,7 +71,7 @@ function sendUploadedFile(url, res){
 function saveUploadedFile(req, res){
   console.log('saving uploaded file');
   let fileName = path.basename(req.url);
-  let file = path.join(__dirname, 'download', fileName)
+  let file = path.join(__dirname, 'download', decodeURIComponent(fileName))
   req.pipe(fs.createWriteStream(file));
   req.on('end', () => {
     res.writeHead(200, {'Content-Type': 'text'});

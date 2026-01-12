@@ -53,7 +53,7 @@ function sendListOfUploadedFiles(res){
 
 
 function sendUploadedFile(url, res){
-  let file = path.join(__dirname, url);
+  let file = path.join(__dirname, decodeURIComponent(url));
   fs.readFile(file, (err, content) => {
     if(err){
       res.writeHead(404, {'Content-Type': 'text'});
